@@ -42,7 +42,7 @@ fun MainScreen() {
         OutlinedTextField(
             value = subject,
             onValueChange = { subject = it },
-            label = { Text("Название предмета") },
+            label = { Text("Название товара") },
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -66,16 +66,16 @@ fun MainScreen() {
         Button(onClick = { readNFC() }) {
             Text("Считать NFC метку")
         }
-    }
+    }   
 }
 
 fun sendDataToServer(subject: String, price: String) {
-    // Здесь вы можете реализовать логику отправки данных на сервер через Retrofit
+    // Здесь будет логика отправки данных на сервер через
     CoroutineScope(Dispatchers.IO).launch {
-        // Например, здесь должны быть вызовы к API.
+        // Вызовы к API.
     }
 }
 
 fun readNFC() {
-    // Реализация считывания NFC метки.
+
 }
