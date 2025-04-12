@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Разрешения для считывания меток NFC-->
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="com.huawei.permission.external_app_settings.USE_COMPONENT" />
     <uses-feature android:name="android.hardware.nfc" android:required="true"/>
 
     <application
@@ -30,7 +31,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-    </application> <!-- Закрываю тег application -->
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+    </application>
 </manifest>

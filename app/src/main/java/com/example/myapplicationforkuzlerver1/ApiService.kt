@@ -1,26 +1,24 @@
 package com.example.myapplicationforkuzlerver1
 
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-// Модель данных, которую вы будете отправлять
-data class DataModel(val subject: String, val price: String)
-
 interface ApiService {
-    @POST("/submitData")
-    suspend fun submitData(@Body data: DataModel)
-
-    companion object {
-        private const val BASE_URL = "https://your_api_base_url.com"
-
-        fun create(): ApiService {
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-            return retrofit.create(ApiService::class.java)
-        }
-    }
+    @POST("products/")
+    suspend fun createProduct(@Body product: ProductData): Response<ProductResponse>
 }
+
+data class ProductData(
+    val nfc_id: String,
+    val name: String,
+    val price: String
+)
+
+data class ProductResponse(
+    val id: Int,
+    val nfc_id: String,
+    val name: String,
+    val price: String,
+    val created_at: String
+)
